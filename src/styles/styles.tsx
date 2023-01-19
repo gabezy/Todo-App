@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { dark } from "./Variables";
+import { lighten } from "polished";
 
 export const HeaderWrapper = styled.header`
   height: 200px;
@@ -29,6 +30,13 @@ export const Input = styled.input`
   border-radius: 8px;
   color: ${dark.colorBase.gray300};
   padding: 1rem;
+  &:hover,
+  &:focus {
+    outline: none;
+    border-color: ${dark.colorProduct.purpleDark};
+    background: ${lighten(0.05, dark.colorBase.gray500)};
+    color: ${dark.colorBase.gray100};
+  }
 `;
 
 export const Button = styled.button`
@@ -44,6 +52,11 @@ export const Button = styled.button`
   border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 700;
+  transition: all 0.15s;
+  cursor: pointer;
+  &:hover {
+    background: ${dark.colorProduct.blue};
+  }
 `;
 
 export const TodoWrapper = styled.article`
@@ -65,7 +78,7 @@ export const TodoHeader = styled.header`
       background: ${dark.colorBase.gray400};
       color: ${dark.colorBase.gray200};
       padding: 2px 8px;
-      border-radius: 50%;
+      border-radius: 999px;
     }
   }
   & .taskTitle:last-child {
@@ -103,6 +116,24 @@ export const TaskContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  & .deleteButton {
+    opacity: 0;
+    transition: all 0.1s;
+    background: transparent;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 8px;
+    &:hover {
+      background: ${dark.colorBase.gray300};
+    }
+    &:hover > svg path {
+      fill: red !important;
+    }
+  }
+  &:hover .deleteButton {
+    opacity: initial;
+  }
 
   & .content {
     max-width: 70ch;

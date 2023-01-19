@@ -19,7 +19,12 @@ export const Todo: React.FC<TodoProps> = ({
           Tarefas criadas <span className="counter">{todoCreatedCounter}</span>
         </p>
         <p className="taskTitle">
-          Concluídas <span className="counter">{todoCompletedCounter}</span>
+          Concluídas{" "}
+          <span className="counter">
+            {todoCreatedCounter <= 0
+              ? todoCreatedCounter
+              : `${todoCompletedCounter} de ${todoCreatedCounter}`}
+          </span>
         </p>
       </TodoHeader>
       {children}

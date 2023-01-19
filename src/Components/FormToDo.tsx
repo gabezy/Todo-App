@@ -3,17 +3,23 @@ import { Button, Form, Input } from "../styles/styles";
 import { PlusCircle } from "phosphor-react";
 
 interface FormToDoProps {
-  handleSubmit: (event: FormEvent) => void;
-  handleOnChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleCreateNewTodoTask: (event: FormEvent) => void;
+  handleTodoText: (event: ChangeEvent<HTMLInputElement>) => void;
+  inputValue: string;
 }
 
 export const FormToDo: React.FC<FormToDoProps> = ({
-  handleSubmit,
-  handleOnChange,
+  handleCreateNewTodoTask,
+  handleTodoText,
+  inputValue,
 }) => {
   return (
-    <Form onSubmit={handleSubmit}>
-      <Input placeholder="Adicione uma nova tarefa" onChange={handleOnChange} />
+    <Form onSubmit={handleCreateNewTodoTask}>
+      <Input
+        placeholder="Adicione uma nova tarefa"
+        onChange={handleTodoText}
+        value={inputValue}
+      />
       <Button>
         Criar
         <PlusCircle size={16} weight="bold" />

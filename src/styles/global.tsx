@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Inter', sans-serif;
     font-weight: normal;
     font-size: 1rem;
-    
+    line-height: 1.4;
   }
   ul {
     list-style: none;

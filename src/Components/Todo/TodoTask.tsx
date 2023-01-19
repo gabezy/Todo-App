@@ -12,7 +12,9 @@ export const TodoTask: React.FC<TodoTasksProps> = ({ content }) => {
       <RadioInput />
       <TaskContent>
         <p className="content">{content}</p>
-        <Trash size={20} color={dark.colorBase.gray300} />
+        <button className="deleteButton">
+          <Trash size={20} color={dark.colorBase.gray300} />
+        </button>
       </TaskContent>
     </TaskCard>
   );

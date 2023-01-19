@@ -14,6 +14,7 @@ interface VariableProps {
     purpleDark: string;
     blue: string;
     blueDark: string;
+    danger: string;
   };
 }
 export const dark: VariableProps = {
@@ -32,5 +33,6 @@ export const dark: VariableProps = {
     purpleDark: "#5E60CE",
     blue: "#4EA8DE",
     blueDark: "#1E6F9F",
+    danger: "#E25858",
   },
 };
