@@ -17,6 +17,11 @@ const CustomRadioBtn = styled.label`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background: ${dark.colorProduct.blueDark};
+    opacity: 0.5;
+  }
   & .checkmark {
     width: calc(100% - 8px);
     height: calc(100% - 8px);
