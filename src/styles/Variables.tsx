@@ -36,3 +36,5 @@ export const dark: VariableProps = {
     danger: "#E25858",
   },
 };
+
+export const mobile = "max-width: 40rem";

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { dark } from "./Variables";
+import { dark, mobile } from "./Variables";
 import { lighten } from "polished";
 
 export const HeaderWrapper = styled.header`
@@ -11,7 +11,7 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const Container = styled.main`
-  max-width: calc(900px + 1rem);
+  max-width: calc(800px + 1rem);
   margin: 0 auto;
   padding: 0 1rem;
 `;
@@ -21,6 +21,10 @@ export const Form = styled.form`
   grid-template-columns: 1fr auto;
   gap: 0.3rem;
   margin-top: -2rem;
+  @media (${mobile}) {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
 `;
 
 export const Input = styled.input`
@@ -110,6 +114,9 @@ export const TaskCard = styled.div`
   gap: 12px;
   align-items: flex-start;
   color: ${dark.colorBase.gray100};
+  &:last-of-type {
+    margin-bottom: 3rem;
+  }
 `;
 
 export const TaskContent = styled.div`
@@ -130,6 +137,9 @@ export const TaskContent = styled.div`
     &:hover > svg path {
       fill: red !important;
     }
+    @media (${mobile}) {
+      opacity: initial;
+    }
   }
   &:hover .deleteButton {
     opacity: initial;
@@ -137,5 +147,9 @@ export const TaskContent = styled.div`
 
   & .content {
     max-width: 70ch;
+    &.checked {
+      text-decoration: line-through;
+      color: ${dark.colorBase.gray300};
+    }
   }
 `;
