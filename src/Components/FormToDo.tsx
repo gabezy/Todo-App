@@ -2,6 +2,7 @@ import React, { ChangeEvent, FormEvent, SetStateAction } from "react";
 import { Button, Form, Input } from "../styles/styles";
 import { PlusCircle } from "phosphor-react";
 import { useForm } from "../Hooks/useForm";
+import { Error } from "../Helper/Error";
 
 interface FormToDoProps {
   setTodoCreatedCounter: React.Dispatch<SetStateAction<number>>;
@@ -34,7 +35,7 @@ export const FormToDo: React.FC<FormToDoProps> = ({
         Criar
         <PlusCircle size={16} weight="bold" />
       </Button>
-      {todoText.error && <p>{todoText.error}</p>}
+      {todoText.error && <Error>{todoText.error}</Error>}
     </Form>
   );
 };
