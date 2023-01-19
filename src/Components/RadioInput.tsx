@@ -1,6 +1,12 @@
-import React from "react";
+import React, { SetStateAction, InputHTMLAttributes } from "react";
 import styled from "styled-components";
 import { dark } from "../styles/Variables";
+
+interface RadioInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  setIsCompleted: React.Dispatch<SetStateAction<boolean>>;
+  isCompleted: boolean;
+  setTodoCompletedCounter: React.Dispatch<SetStateAction<number>>;
+}
 
 const CustomRadioBtn = styled.label`
   width: 20px;
@@ -10,6 +16,7 @@ const CustomRadioBtn = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   & .checkmark {
     width: calc(100% - 8px);
     height: calc(100% - 8px);
@@ -27,10 +34,26 @@ const CustomRadioBtn = styled.label`
   }
 `;
 
-export const RadioInput = ({ checked = false }) => {
+export const RadioInput: React.FC<RadioInputProps> = ({
+  setIsCompleted,
+  isCompleted,
+  setTodoCompletedCounter,
+  ...props
+}) => {
+  const handleChange = () => {
+    setIsCompleted((prev) => !prev);
+    if (!isCompleted) setTodoCompletedCounter((prev) => prev + 1);
+    else setTodoCompletedCounter((prev) => prev - 1);
+  };
+
   return (
     <CustomRadioBtn>
-      <input type="radio" name="completed" checked={checked} />
+      <input
+        type="radio"
+        checked={isCompleted}
+        onClick={handleChange}
+        {...props}
+      />
       <span className="checkmark"></span>
     </CustomRadioBtn>
   );

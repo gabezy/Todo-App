@@ -4,24 +4,21 @@ import { Header } from "./Components/Header";
 import { Todo } from "./Components/Todo/Todo";
 import { TodoEmpty } from "./Components/Todo/TodoEmpty";
 import { TodoTask } from "./Components/Todo/TodoTask";
-import { useForm } from "./Hooks/useForm";
+import { usePersistedState } from "./Hooks/usePersistedState";
 import { GlobalStyle } from "./styles/global";
 import { Container } from "./styles/styles";
 function App() {
-  const todoText = useForm(false);
-  const [todoList, setTodoList] = React.useState([
-    "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-  ]);
-  const [todoCreatedCounter, setTodoCreatedCounter] = React.useState(0);
+  const [todoList, setTodoList] = usePersistedState<string[]>("Todo", []);
+  const [todoCreatedCounter, setTodoCreatedCounter] = React.useState(
+    todoList.length
+  );
   const [todoCompletedCounter, setTodoCompletedCounter] = React.useState(0);
 
-  const handleCreateNewTodoTask = (event: FormEvent) => {
-    event.preventDefault();
-    if (todoText.validate()) {
-      setTodoList((prev) => [...prev, todoText.value]);
-      setTodoCreatedCounter((prev) => prev + 1);
-      todoText.setValue("");
-    }
+  const onDeleteTask = (contentTaskToBeDeleted: string) => {
+    setTodoList((prev) => {
+      return prev.filter((content) => content !== contentTaskToBeDeleted);
+    });
+    setTodoCreatedCounter((prev) => prev - 1);
   };
 
   return (
@@ -30,16 +27,22 @@ function App() {
       <Header />
       <Container>
         <FormToDo
-          handleCreateNewTodoTask={handleCreateNewTodoTask}
-          handleTodoText={todoText.handleValue}
-          inputValue={todoText.value}
+          setTodoCreatedCounter={setTodoCreatedCounter}
+          setTodoList={setTodoList}
         />
         <Todo
           todoCreatedCounter={todoCreatedCounter}
           todoCompletedCounter={todoCompletedCounter}
         >
           {todoList.length ? (
-            todoList.map((todo) => <TodoTask key={todo} content={todo} />)
+            todoList.map((todo) => (
+              <TodoTask
+                key={todo}
+                content={todo}
+                onDeleteTask={onDeleteTask}
+                setTodoCompletedCounter={setTodoCompletedCounter}
+              />
+            ))
           ) : (
             <TodoEmpty />
           )}
