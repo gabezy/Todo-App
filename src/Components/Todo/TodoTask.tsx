@@ -32,7 +32,7 @@ export const TodoTask: React.FC<TodoTasksProps> = ({
       <TaskContent>
         <p className={isCompleted ? "content checked" : "content"}>{content}</p>
         <button className="deleteButton" onClick={handleDeleteTask}>
-          <Trash size={20} color={dark.colorBase.gray300} />
+          <Trash size={20} />
         </button>
       </TaskContent>
     </TaskCard>

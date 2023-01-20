@@ -131,12 +131,15 @@ export const TaskContent = styled.div`
     padding: 4px;
     cursor: pointer;
     border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${dark.colorBase.gray300};
     &:hover {
       background: ${dark.colorBase.gray300};
+      color: ${dark.colorProduct.danger};
     }
-    &:hover > svg path {
-      fill: red !important;
-    }
+
     @media (${mobile}) {
       opacity: initial;
     }
