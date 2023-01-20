@@ -1,6 +1,5 @@
-import React from "react";
-import { HeaderWrapper } from "../styles/styles";
-import logo from "../assets/logo.svg";
+import logo from "../../assets/logo.svg";
+import { HeaderWrapper } from "./styles";
 
 export const Header = () => {
   return (

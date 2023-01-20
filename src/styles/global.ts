@@ -1,5 +1,4 @@
-import { createGlobalStyle, useTheme } from "styled-components";
-import { dark } from "./Variables";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   *{
@@ -8,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: ${dark.colorBase.gray600}
+    background: ${({ theme }) => theme.gray600}
   }
   body, input, textarea, button {
     font-family: 'Inter', sans-serif;
@@ -27,4 +26,10 @@ export const GlobalStyle = createGlobalStyle`
     display:block;
     max-width: 100%
   }
+`;
+
+export const Container = styled.main`
+  max-width: calc(800px + 1rem);
+  margin: 0 auto;
+  padding: 0 1rem;
 `;

@@ -1,8 +1,8 @@
 import React, { SetStateAction } from "react";
 import { Trash } from "phosphor-react";
-import { TaskCard, TaskContent } from "../../styles/styles";
-import { dark } from "../../styles/Variables";
-import { RadioInput } from "../RadioInput";
+import { TaskCard, TaskContent } from "./styles";
+import { dark } from "../../../styles/Variables";
+import { RadioInput } from "../../RadioInput";
 
 type TodoTasksProps = {
   content: string;
