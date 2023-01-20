@@ -1,12 +1,15 @@
-import React, { ChangeEvent, FormEvent } from "react";
-import { FormToDo } from "./Components/FormToDo";
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import { FormToDo } from "./Components/FormTodo";
 import { Header } from "./Components/Header";
-import { Todo } from "./Components/Todo/Todo";
+import { Todo } from "./Components/Todo";
 import { TodoEmpty } from "./Components/Todo/TodoEmpty";
 import { TodoTask } from "./Components/Todo/TodoTask";
 import { usePersistedState } from "./Hooks/usePersistedState";
 import { GlobalStyle } from "./styles/global";
-import { Container } from "./styles/styles";
+import { Container } from "./styles/global";
+import { defaultTheme } from "./styles/Theme/defaultTheme";
+
 function App() {
   const [todoList, setTodoList] = usePersistedState<string[]>("Todo", []);
   const [todoCreatedCounter, setTodoCreatedCounter] = React.useState(
@@ -22,8 +25,7 @@ function App() {
   };
 
   return (
-    <>
-      <GlobalStyle />
+    <ThemeProvider theme={defaultTheme}>
       <Header />
       <Container>
         <FormToDo
@@ -48,7 +50,8 @@ function App() {
           )}
         </Todo>
       </Container>
-    </>
+      <GlobalStyle />
+    </ThemeProvider>
   );
 }
 

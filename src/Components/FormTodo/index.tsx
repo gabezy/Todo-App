@@ -1,8 +1,8 @@
-import React, { ChangeEvent, FormEvent, SetStateAction } from "react";
-import { Button, Form, Input } from "../styles/styles";
+import React, { FormEvent, SetStateAction } from "react";
+import { Form, Input, Button } from "./styles";
 import { PlusCircle } from "phosphor-react";
-import { useForm } from "../Hooks/useForm";
-import { Error } from "../Helper/Error";
+import { useForm } from "../../Hooks/useForm";
+import { Error } from "../../Helper/Erro";
 
 interface FormToDoProps {
   setTodoCreatedCounter: React.Dispatch<SetStateAction<number>>;

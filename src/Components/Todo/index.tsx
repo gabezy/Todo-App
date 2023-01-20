@@ -1,5 +1,5 @@
 import React from "react";
-import { TodoHeader, TodoWrapper } from "../../styles/styles";
+import { TodoWrapper, TodoHeader } from "./styles";
 
 interface TodoProps {
   children: JSX.Element | JSX.Element[];
