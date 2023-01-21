@@ -1,33 +1,32 @@
-import React, { SetStateAction, InputHTMLAttributes } from "react";
-import { CustomRadioBtn } from "./styles";
+import { Check } from "phosphor-react";
+import React, { InputHTMLAttributes } from "react";
+import { CustomRadioButton } from "./styles";
 
 interface RadioInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  setIsCompleted: React.Dispatch<SetStateAction<boolean>>;
+  toggleCompletedTask: () => void;
   isCompleted: boolean;
-  setTodoCompletedCounter: React.Dispatch<SetStateAction<number>>;
 }
 
 export const RadioInput: React.FC<RadioInputProps> = ({
-  setIsCompleted,
+  toggleCompletedTask,
   isCompleted,
-  setTodoCompletedCounter,
   ...props
 }) => {
-  const handleChange = () => {
-    setIsCompleted((prev) => !prev);
-    if (!isCompleted) setTodoCompletedCounter((prev) => prev + 1);
-    else setTodoCompletedCounter((prev) => prev - 1);
-  };
-
   return (
-    <CustomRadioBtn>
-      <input
-        type="radio"
-        checked={isCompleted}
-        onClick={handleChange}
-        {...props}
-      />
-      <span className="checkmark"></span>
-    </CustomRadioBtn>
+    <>
+      {isCompleted ? (
+        <CustomRadioButton className="checked" onClick={toggleCompletedTask}>
+          <Check size={12} />
+        </CustomRadioButton>
+      ) : (
+        <CustomRadioButton
+          className="unchecked"
+          onClick={toggleCompletedTask}
+        ></CustomRadioButton>
+      )}
+    </>
+    // <CustomRadioButton onClick={handleChange}>
+    //   {isCompleted ? <Check size={12} /> : ""}
+    // </CustomRadioButton>
   );
 };
