@@ -20,7 +20,7 @@ function App() {
   const todoText = useForm(false);
 
   const [todoList, setTodoList, setTodoTaskCompleted, setTodoTaskUncompleted] =
-    usePersistedState("List", [{ completed: false, content: "Study React" }]);
+    usePersistedState("List", []);
   const [todoCreatedCounter, setTodoCreatedCounter] = React.useState(
     todoList.length
   );
