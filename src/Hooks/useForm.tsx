@@ -1,5 +1,9 @@
 import React, { ChangeEvent } from "react";
 
+export type handleValueProps = ChangeEvent<
+  HTMLInputElement | HTMLTextAreaElement
+>;
+
 export const useForm = (type: string | boolean) => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState<string | boolean>(false);
@@ -14,9 +18,7 @@ export const useForm = (type: string | boolean) => {
     }
   };
 
-  const handleValue = ({
-    target,
-  }: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleValue = ({ target }: handleValueProps) => {
     if (error) validate(target.value);
     setValue(target.value);
   };
